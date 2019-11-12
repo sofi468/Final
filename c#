@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace TrabajoFinal
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // se declaran las varibles numero, x, respuesta
+            int numero = 0;
+            int x = 0;
+            int respuesta = 0;
+
+            // se pide al usuario que ingrese el numero de la lista
+            Console.WriteLine("Escriba numero positivo para definir el tamaño de la lista.");
+            numero = int.Parse(Console.ReadLine());
+
+            // declaramos la lista para que reciba los numeros del usuario
+            List<int> Lista = new List<int>();
+            while (x < numero)
+            {
+                Console.WriteLine("Escriba un numero para la posicion " + x);
+                string num = Console.ReadLine();
+                Lista.Add(int.Parse(num));
+                x++;
+            }
+
+            List<int> Lista2 = new List<int>();
+            //Ordenamos la lista y se guarda la lista en una nueva lista
+            Lista2 = Lista.OrderBy(p => p).ToList();
+
+            // pregunta al usuario
+            Console.WriteLine("Ingrese 1 para ordernar la lista de manera ascendente y 2 de forma descendente");
+            respuesta = int.Parse(Console.ReadLine());
+            x = 0;
+            //preguntamos de que manera mostramos la lista  1 si de manera ascendente
+            if (respuesta == 1)
+            {
+                // se muestra la lista de manera ascendente
+                while (x < numero)
+                {
+                    Console.WriteLine(Lista2[x]);
+                    x++;
+                }
+            }
+            else
+            {
+                // se muestra la lista de manera descendente
+                while (numero > 0)
+                {
+                    Console.WriteLine(Lista2[numero - 1]);
+                    numero--;
+                }
+            }
+
+        // se pide un ingreso para que la consola no se cierre una vez termine la ejecucion sino hasta que el usuario escriba algo
+            Console.ReadLine();
+        }
+    }
+}
